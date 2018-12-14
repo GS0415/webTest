@@ -3,6 +3,7 @@ package com.Tomcat.service;
 import com.Tomcat.dao.IProDao;
 import com.Tomcat.dao.ProDaoImpl;
 import com.Tomcat.pojo.Product;
+import com.Tomcat.pojo.User;
 
 import java.util.List;
 
@@ -32,5 +33,10 @@ public class ProServiceImpl implements IProService{
     @Override
     public Product selOne(int id) {
         return dao.selOne(id);
+    }
+
+    @Override
+    public User selOneUser(String name) {
+        return dao.SelOneUser(name);
     }
 }

@@ -1,5 +1,6 @@
 package com.Tomcat.dao;
 import com.Tomcat.pojo.Product;
+import com.Tomcat.pojo.User;
 import com.Tomcat.utils.IRowMap;
 import com.Tomcat.utils.JdbcUtil;
 
@@ -61,6 +62,25 @@ public class ProDaoImpl implements IProDao{
                 return p;
             }
         }, id);
+    }
+
+    @Override
+    public User SelOneUser(String name) {
+        return JdbcUtil.selectOne("select * from user where username=?", new IRowMap<User>() {
+            @Override
+            public User rowMap(ResultSet rs) {
+                User user =new User();
+                try {
+                    user.setPassWord(rs.getString("password"));
+                    user.setUserId(rs.getInt("id"));
+                    user.setUserName(rs.getString("username"));
+                    user.setTel(rs.getString("tel"));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                return user;
+            }
+        }, name);
     }
 
 
