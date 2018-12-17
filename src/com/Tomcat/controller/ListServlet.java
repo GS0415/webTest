@@ -19,6 +19,6 @@ public class ListServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> list=service.sel();
         req.setAttribute("list",list);
-        req.getRequestDispatcher("/Jsps/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("Jsps/list.jsp").forward(req,resp);
     }
 }
